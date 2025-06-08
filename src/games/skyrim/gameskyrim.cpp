@@ -1,6 +1,6 @@
 #include "gameskyrim.h"
 
-#include "skyrimbsainvalidation.h"
+//#include "skyrimbsainvalidation.h"
 #include "skyrimdataarchives.h"
 #include "skyrimgameplugins.h"
 #include "skyrimmoddatachecker.h"
@@ -44,7 +44,7 @@ bool GameSkyrim::init(IOrganizer* moInfo)
   auto dataArchives = std::make_shared<SkyrimDataArchives>(this);
   registerFeature(std::make_shared<SkyrimScriptExtender>(this));
   registerFeature(dataArchives);
-  registerFeature(std::make_shared<SkyrimBSAInvalidation>(dataArchives.get(), this));
+  //registerFeature(std::make_shared<SkyrimBSAInvalidation>(dataArchives.get(), this));
   registerFeature(std::make_shared<GamebryoSaveGameInfo>(this));
   registerFeature(std::make_shared<GamebryoLocalSavegames>(this, "skyrim.ini"));
   registerFeature(std::make_shared<SkyrimModDataChecker>(this));
@@ -94,7 +94,7 @@ QString GameSkyrim::localizedName() const
 
 QString GameSkyrim::author() const
 {
-  return "Tannin & MO2 Team";
+  return "Kobi-Blade";
 }
 
 QString GameSkyrim::description() const
