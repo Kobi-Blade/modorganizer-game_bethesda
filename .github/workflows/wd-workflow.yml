@@ -1,0 +1,23 @@
+name: Build Plugins
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Build Plugins
+        uses: ModOrganizer2/build-with-mob-action@master
+        with:
+          mo2-dependencies: uibase
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ github.sha }}
+          path: ./build/${{ github.event.repository.name }}/vsbuild/src/games/**/*.dll
